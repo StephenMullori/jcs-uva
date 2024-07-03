@@ -1,6 +1,5 @@
 import { Lucia } from 'lucia';
 import { NodePostgresAdapter } from '@lucia-auth/adapter-postgresql';
-import pg from 'pg';
 import { db } from './db';
 
 const adapter = new NodePostgresAdapter(db, {
@@ -18,7 +17,9 @@ export const lucia = new Lucia(adapter, {
 	getUserAttributes: (attributes) => {
 		return {
 			username: attributes.username,
-			role: attributes.role
+			role: attributes.role,
+			firstName: attributes.firstName,
+			lastName: attributes.lastName
 		};
 	}
 });
@@ -34,4 +35,6 @@ declare module 'lucia' {
 interface DatabaseUserAttributes {
 	username: string;
 	role: string;
+	firstName: string;
+	lastName: string;
 }
