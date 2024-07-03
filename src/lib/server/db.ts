@@ -1,5 +1,6 @@
 import pg from 'pg';
 import express from 'express';
+import 'dotenv/config';
 
 const { Pool } = pg;
 
@@ -9,7 +10,7 @@ const port = 3000;
 app.use(express.static('public'));
 
 export const db = new Pool({
-	user: 'yourusername',
+	user: process.env.DB,
 	host: 'localhost',
 	database: 'yourdatabase',
 	password: 'yourpassword',
