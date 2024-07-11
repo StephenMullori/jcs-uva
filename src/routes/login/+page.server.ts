@@ -1,11 +1,5 @@
 import type { PageServerLoad } from './$types';
 
-export const load = (async (event) => {
-	const uid = event.locals.session?.userId;
-
+export const load = (async () => {
 	return {};
 }) satisfies PageServerLoad;
-
-export const actions = {
-	test: async () => {}
-};
