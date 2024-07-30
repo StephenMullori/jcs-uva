@@ -1,5 +1,8 @@
 <script lang="ts">
-    export let articleDetails: {
+	import type { PageData } from "../../$types";
+
+    let {data}: {data:PageData} = $props()
+    let articleDetails: {
         title: string;
         author: string;
         date: string;
