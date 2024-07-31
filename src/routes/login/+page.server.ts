@@ -1,4 +1,4 @@
-import type { Actions } from '@sveltejs/kit';
+import { redirect, type Actions } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
@@ -18,13 +18,20 @@ export const actions: Actions = {
 		const form = await superValidate(event.request, zod(LoginSchema));
 		const email = form.data.email;
 		const password = form.data.password;
-
+		const supabase = event.locals.supabase;
 		try {
-			const supabase = event.locals.supabase;
-			await supabase.auth.signInWithPassword({ email, password });
+			const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+			console.log('data:\n', data);
+			console.log('error:\n', error);
 		} catch (error) {
+			console.log('errrorrrrrrrr');
 			console.error(error);
-			redirect(303, '/auth/error');
 		}
+
+		supabase.auth.onAuthStateChange(() => {
+			console.log('authenticated');
+			console.log(supabase.auth.getUser);
+			redirect(307, '/authenticated/console');
+		});
 	}
 } satisfies Actions;

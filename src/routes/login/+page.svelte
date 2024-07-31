@@ -37,7 +37,7 @@
 					class="border-grey-300 w- w-full max-w-72 rounded-sm border px-1 py-1"
 				/>
 			</div>
-			<button type="submit" class="bg-normal-800 px-5 py-3">Log In</button>
+			<button type="submit" class="bg-neutral-800 px-5 py-3 text-white">Log In</button>
 		</form>
 	</main>
 </div>
