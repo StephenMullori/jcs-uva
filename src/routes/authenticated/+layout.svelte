@@ -5,6 +5,10 @@
 	import type { Snippet } from 'svelte';
 	import type { LayoutData } from '../$types';
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
+	let email;
+	async () => {
+		email = await data.supabase.auth.getUser();
+	};
 </script>
 
 <HeaderBarConsole userEmail={data.session?.user.email} />

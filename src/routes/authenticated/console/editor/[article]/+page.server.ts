@@ -2,8 +2,7 @@ import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load = (async (event) => {
-	const { session, user } = await event.locals.safeGetSession();
-	console.log(user?.email);
+	const { session } = await event.locals.safeGetSession();
 	if (session === null) {
 		redirect(307, '/');
 	}

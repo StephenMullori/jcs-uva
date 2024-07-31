@@ -7,9 +7,11 @@ import { zod } from 'sveltekit-superforms/adapters';
 
 import { SignInFormSchema } from '$lib/forms/Login/SignInFormSchema';
 
-export const load = (async () => {
+export const load = (async (event) => {
 	const form = await superValidate(zod(SignInFormSchema));
-	return { form };
+	const user = await event.locals.supabase.auth.getUser();
+	const email = user.data.user?.email;
+	return { form, email };
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
@@ -17,14 +19,12 @@ export const actions: Actions = {
 		const form = await superValidate(event.request, zod(SignInFormSchema));
 		const email = form.data.email;
 		const password = form.data.password;
-		const supabase = event.locals.supabase;
+
 		try {
-			await supabase.auth.signInWithPassword({ email, password });
+			await event.locals.supabase.auth.signInWithPassword({ email, password });
+			redirect(307, '/authenticated/console');
 		} catch (error) {
 			console.error(error);
 		}
-		supabase.auth.onAuthStateChange(() => {
-			redirect(307, '/authenticated/console');
-		});
 	}
 } satisfies Actions;
