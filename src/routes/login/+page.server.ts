@@ -5,32 +5,25 @@ import { zod } from 'sveltekit-superforms/adapters';
 // import { message } from 'sveltekit-superforms';
 // import { fail } from '@sveltejs/kit';
 
-import { LoginSchema } from '$lib/forms/LoginSchema';
+import { SignInFormSchema } from '$lib/forms/Login/SignInFormSchema';
 
 export const load = (async () => {
-	const form = await superValidate(zod(LoginSchema));
-	console.log('running');
+	const form = await superValidate(zod(SignInFormSchema));
 	return { form };
 }) satisfies PageServerLoad;
 
 export const actions: Actions = {
-	login: async (event) => {
-		const form = await superValidate(event.request, zod(LoginSchema));
+	default: async (event) => {
+		const form = await superValidate(event.request, zod(SignInFormSchema));
 		const email = form.data.email;
 		const password = form.data.password;
 		const supabase = event.locals.supabase;
 		try {
-			const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-			console.log('data:\n', data);
-			console.log('error:\n', error);
+			await supabase.auth.signInWithPassword({ email, password });
 		} catch (error) {
-			console.log('errrorrrrrrrr');
 			console.error(error);
 		}
-
 		supabase.auth.onAuthStateChange(() => {
-			console.log('authenticated');
-			console.log(supabase.auth.getUser);
 			redirect(307, '/authenticated/console');
 		});
 	}
