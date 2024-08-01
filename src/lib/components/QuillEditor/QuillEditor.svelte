@@ -1,56 +1,58 @@
 <script lang="ts">
-	import { onMount, createEventDispatcher } from 'svelte';
-	import Quill from 'quill';
+	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
+	import type { Writable } from 'svelte/store';
+	let { value, errors }: { value: string; errors: Writable<string[]> } = $props();
 
-	let value = $state('');
-	let placeholder = 'Write something...';
+	let quill: any;
+	let editorElement: HTMLElement;
 
-	let element: HTMLElement;
+	onMount(async () => {
+		if (browser) {
+			const Quill = (await import('quill')).default;
+			await import('quill/dist/quill.snow.css');
 
-	onMount(() => {
-		const quill = new Quill('#editor', {
-			theme: 'snow',
-			placeholder: placeholder,
-			modules: {
-				toolbar: [
-					['bold', 'italic', 'underline', 'strike'],
-					['blockquote', 'code-block'],
-					[{ header: 1 }, { header: 2 }],
-					[{ list: 'ordered' }, { list: 'bullet' }],
-					[{ script: 'sub' }, { script: 'super' }],
-					[{ indent: '-1' }, { indent: '+1' }],
-					[{ direction: 'rtl' }],
-					[{ size: ['small', false, 'large', 'huge'] }],
-					[{ header: [1, 2, 3, 4, 5, 6, false] }],
-					[{ color: [] }, { background: [] }],
-					[{ font: [] }],
-					[{ align: [] }],
-					['clean']
-				]
-			}
-		});
-
-		if (quill) {
-			quill.on('text-change', () => {
-				value.set(quill.value!.root.innerHTML);
-				dispatch('change', { value: value.value });
+			quill = new Quill(editorElement, {
+				theme: 'snow',
+				modules: {
+					toolbar: [
+						['bold', 'italic', 'underline', 'strike'],
+						['blockquote', 'code-block'],
+						[{ header: 1 }, { header: 2 }],
+						[{ list: 'ordered' }, { list: 'bullet' }],
+						[{ script: 'sub' }, { script: 'super' }],
+						[{ indent: '-1' }, { indent: '+1' }],
+						[{ direction: 'rtl' }],
+						[{ size: ['small', false, 'large', 'huge'] }],
+						[{ header: [1, 2, 3, 4, 5, 6, false] }],
+						[{ color: [] }, { background: [] }],
+						[{ font: [] }],
+						[{ align: [] }],
+						['clean']
+					]
+				}
 			});
 
-			if (value.value) {
-				quill.value.root.innerHTML = value.value;
-			}
-		}
+			// If there's existing content, set it
+			// if (value) {
+			//   try {
+			// 	const contentDelta = JSON.parse(value);
+			// 	quill.setContents(contentDelta);
+			//   } catch (e) {
+			// 	console.error("Failed to parse existing content", e);
+			//   }
+			// }
 
-		return () => {
-			quill.value?.off('text-change');
-		};
-	});
-
-	effect(() => {
-		if (quill.value && value.value !== quill.value.root.innerHTML) {
-			quill.value.root.innerHTML = value.value;
+			quill.on('text-change', () => {
+				const delta = quill.getContents();
+				value = JSON.stringify(delta);
+			});
 		}
 	});
 </script>
 
-<div bind:this={element}></div>
+<div bind:this={editorElement}></div>
+
+{#if $errors}
+	<div class="error">{$errors}</div>
+{/if}
