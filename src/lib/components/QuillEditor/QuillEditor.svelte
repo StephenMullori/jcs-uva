@@ -2,9 +2,12 @@
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 	import type { Writable } from 'svelte/store';
-	let { value, errors }: { value: string; errors: Writable<string[]> } = $props();
+	import type { SuperValidated } from 'sveltekit-superforms';
+	import type { AnyZodObject } from 'zod';
 
-	let quill: any;
+	let { value = $bindable(), errors }: { value: any; errors: string[] | undefined } = $props();
+
+	let quill: Quill = $state();
 	let editorElement: HTMLElement;
 
 	onMount(async () => {
@@ -53,6 +56,6 @@
 
 <div bind:this={editorElement}></div>
 
-{#if $errors}
-	<div class="error">{$errors}</div>
+{#if errors?.length > 0}
+	<div class="error">{errors}</div>
 {/if}

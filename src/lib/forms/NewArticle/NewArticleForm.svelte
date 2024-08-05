@@ -8,46 +8,12 @@
 	let { data }: { data: SuperValidated<NewArticleSchema> } = $props();
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
+	import QuillEditor from '$lib/components/QuillEditor/QuillEditor.svelte';
 
 	const form = superForm(data, {
 		validators: zodClient(NewArticleSchema)
 	});
-	const { form: formData, enhance } = form;
-
-	const toolbarOptions = [
-		['bold', 'italic', 'underline', 'strike'], // toggled buttons
-		['blockquote', 'code-block'],
-		['link', 'image', 'video', 'formula'],
-
-		[{ header: 1 }, { header: 2 }], // custom button values
-		[{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
-		[{ script: 'sub' }, { script: 'super' }], // superscript/subscript
-		[{ indent: '-1' }, { indent: '+1' }], // outdent/indent
-		[{ direction: 'rtl' }], // text direction
-
-		[{ size: ['small', false, 'large', 'huge'] }], // custom dropdown
-		[{ header: [1, 2, 3, 4, 5, 6, false] }],
-
-		[{ color: [] }, { background: [] }], // dropdown with defaults from theme
-		[{ font: [] }],
-		[{ align: [] }],
-
-		['clean'] // remove formatting button
-	];
-
-	let quill;
-	onMount(async () => {
-		if (browser) {
-			await import('quill/dist/quill.snow.css');
-			const Quill = (await import('quill')).default;
-			const quill = new Quill('#editor', {
-				modules: {
-					toolbar: toolbarOptions
-				},
-				theme: 'snow'
-			});
-		}
-	});
+	const { form: formData, enhance, errors } = form;
 </script>
 
 <form method="POST" use:enhance class="m-auto w-2/3 rounded-md p-6">
@@ -76,10 +42,7 @@
 		<FieldErrors />
 	</Field>
 
-	{#if browser}
-		<h3>Article content</h3>
-		<div id="editor" class=""></div>
-	{/if}
+	<QuillEditor bind:value={$formData.content} errors={$errors.content} />
 
 	<Field {form} name="content" class="hidden ">
 		<Control let:attrs>

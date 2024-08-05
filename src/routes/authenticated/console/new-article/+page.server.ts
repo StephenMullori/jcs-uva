@@ -15,6 +15,7 @@ export const load = (async (event) => {
 
 export const actions: Actions = {
 	default: async (event) => {
+		console.log('action running');
 		const form = await superValidate(event.request, zod(NewArticleSchema));
 		console.log(form);
 	}
