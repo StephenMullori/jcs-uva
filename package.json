@@ -51,7 +51,6 @@
 		"formsnap": "^1.0.1",
 		"lucide-svelte": "^0.418.0",
 		"postgres": "^3.4.4",
-		"quill": "^2.0.2",
 		"tailwind-merge": "^2.4.0",
 		"tailwind-variants": "^0.2.1"
 	}

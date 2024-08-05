@@ -8,8 +8,6 @@
 	let { data }: { data: SuperValidated<NewArticleSchema> } = $props();
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
-	import QuillEditor from '$lib/components/QuillEditor/QuillEditor.svelte';
-
 	const form = superForm(data, {
 		validators: zodClient(NewArticleSchema)
 	});
@@ -41,8 +39,6 @@
 		<Description />
 		<FieldErrors />
 	</Field>
-
-	<QuillEditor bind:value={$formData.content} errors={$errors.content} />
 
 	<Field {form} name="content" class="hidden ">
 		<Control let:attrs>
