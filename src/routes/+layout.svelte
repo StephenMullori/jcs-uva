@@ -1,11 +1,5 @@
-<script lang="ts">
-	import FooterBar from '$lib/components/FooterBar/FooterBar.svelte';
-	import HeaderBarReader from '$lib/components/HeaderBarReader/HeaderBarReader.svelte';
+<script>
 	import '../app.css';
-
-	let { children } = $props();
 </script>
 
-<HeaderBarReader />
-{@render children()}
-<FooterBar />
+<slot></slot>
