@@ -1,7 +1,5 @@
 <script lang="ts">
 	import FeatureDisplay from '$lib/components/FeatureDisplay/FeatureDisplay.svelte';
-	import FooterBar from '$lib/components/FooterBar/FooterBar.svelte';
-	import HeaderBarReader from '$lib/components/HeaderBarReader/HeaderBarReader.svelte';
 	import Sidebar from '$lib/components/SideBar/Sidebar.svelte';
 	import type { PageData } from './$types';
 
