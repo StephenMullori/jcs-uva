@@ -9,7 +9,7 @@ export const load = (async (event) => {
 	if (article.length === 0) {
 		throw error(404, 'Page not found');
 	}
-	console.log(article[0].bannerImage.url);
+	console.log(article[0].editor);
 
 	return { article: article[0] };
 }) satisfies PageServerLoad;
