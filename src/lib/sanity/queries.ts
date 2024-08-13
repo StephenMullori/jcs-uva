@@ -50,7 +50,7 @@ export interface WriterBlurb {
 
 export interface Article {
 	title: string;
-	publishedAt: Date;
+	publishedAt: string;
 	body: PortableTextBlock[];
 	bannerImage: Image;
 	author: WriterBlurb | null;
