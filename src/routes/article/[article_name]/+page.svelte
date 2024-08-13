@@ -3,21 +3,21 @@
 	import { PortableText } from '@portabletext/svelte';
 	import { client } from '$lib/sanity/client';
 	import imageUrlBuilder from '@sanity/image-url';
-	import type { Image } from '@sanity/types';
 	import type { WriterBlurb } from '$lib/sanity/queries';
 
-	let { data }: { data: PageData } = $props();
-	const { bannerImage, body, title, author, editor } = data.article;
-
 	const builder = imageUrlBuilder(client);
-	function urlFor(source: Image) {
+	function urlFor(source) {
 		return builder.image(source);
 	}
+
+	let { data }: { data: PageData } = $props();
+	const { title, publishedAt, body, bannerImage, author, editor } = data.article;
+	const publishingDate = new Date(publishedAt);
 </script>
 
 {#snippet writer(writer: WriterBlurb | null, position: string)}
 	{#if writer !== null}
-		<div class="flex gap-2">
+		<div class="flex items-center gap-2 py-2 text-lg">
 			{#if position === 'author'}
 				<p>Writen by</p>
 			{:else if position === 'editor'}
@@ -27,7 +27,7 @@
 				<img
 					src={urlFor(writer.image)}
 					alt="Picture of {writer.name}"
-					class="max-w-12 rounded-full"
+					class="h-8 w-8 rounded-full"
 				/>
 			{/if}
 			<p>{writer.name}</p>
@@ -40,6 +40,10 @@
 		<h1 class=" mb-4 text-5xl font-bold">{title}</h1>
 		{@render writer(author, 'author')}
 		{@render writer(editor, 'editor')}
+		<div class="mb-2 flex gap-2 text-lg">
+			<p>published:</p>
+			<time datetime={publishingDate}>{publishingDate.toDateString()}</time>
+		</div>
 		<img src={urlFor(bannerImage)} alt="Main image" class=" mb-4 max-w-5xl object-cover" />
 	</header>
 
