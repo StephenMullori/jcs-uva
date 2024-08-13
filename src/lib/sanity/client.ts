@@ -1,12 +1,10 @@
-import { createClient } from '@sanity/client';
-import { apiVersion, projectId, dataset, studioUrl } from '$lib/sanity/api';
+import { createClient, type ClientConfig } from '@sanity/client';
 
-export const client = createClient({
-	projectId,
-	dataset,
-	apiVersion,
-	useCdn: true,
-	stega: {
-		studioUrl
-	}
-});
+const config: ClientConfig = {
+	projectId: '4w1vy3os',
+	dataset: 'production',
+	useCdn: true, // set to `false` to bypass the edge cache
+	apiVersion: '2024-08-12', // use current date (YYYY-MM-DD) to target the latest API version
+	perspective: 'published'
+};
+export const client = createClient(config);
