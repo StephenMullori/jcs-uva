@@ -7,7 +7,7 @@
 
 <div class="m-auto w-2/3">
 	<!-- svelte-ignore a11y_img_redundant_alt -->
-	<img src={article.image} alt="Main image" class="main-image" />
+	<img src={null} alt="Main image" class="main-image" />
 
 	<h1 class="title">{articleDetails.title}</h1>
 	<p class="meta">By: {articleDetails.author}</p>

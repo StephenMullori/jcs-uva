@@ -13,6 +13,7 @@
 		"format": "prettier --write ."
 	},
 	"devDependencies": {
+		"@portabletext/svelte": "^2.1.11",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
@@ -36,6 +37,7 @@
 	"type": "module",
 	"dependencies": {
 		"@sanity/client": "^6.21.2",
+		"@sanity/types": "^3.53.0",
 		"clsx": "^2.1.1",
 		"tailwind-merge": "^2.5.2",
 		"tailwind-variants": "^0.2.1"
