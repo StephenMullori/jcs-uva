@@ -4,42 +4,24 @@
 	import { client } from '$lib/sanity/client';
 	import imageUrlBuilder from '@sanity/image-url';
 	import type { WriterBlurb } from '$lib/sanity/queries';
+	import WriterInfoBlurb from '$lib/components/WriterInfoBlurb/WriterInfoBlurb.svelte';
 
+	export let data: PageData;
 	const builder = imageUrlBuilder(client);
 	function urlFor(source) {
 		return builder.image(source);
 	}
 
-	let { data }: { data: PageData } = $props();
 	const { title, publishedAt, body, bannerImage, author, editor } = data.article;
 	const publishingDate = new Date(publishedAt);
 </script>
 
-{#snippet writer(writer: WriterBlurb | null, position: string)}
-	{#if writer !== null}
-		<div class="flex items-center gap-2 py-2 text-lg">
-			{#if position === 'author'}
-				<p>Writen by</p>
-			{:else if position === 'editor'}
-				<p>Edited by</p>
-			{/if}
-			{#if writer.image !== null}
-				<img
-					src={urlFor(writer.image)}
-					alt="Picture of {writer.name}"
-					class="h-8 w-8 rounded-full"
-				/>
-			{/if}
-			<p>{writer.name}</p>
-		</div>
-	{/if}
-{/snippet}
-
 <div class="m-auto w-2/3 pt-12">
 	<header class="m-auto max-w-5xl">
 		<h1 class=" mb-4 text-5xl font-bold">{title}</h1>
-		{@render writer(author, 'author')}
-		{@render writer(editor, 'editor')}
+		<WriterInfoBlurb writer={author} position={'author'} />
+		<WriterInfoBlurb writer={editor} position={'editor'} />
+
 		<div class="mb-2 flex gap-2 text-lg">
 			<p>published:</p>
 			<time datetime={publishingDate}>{publishingDate.toDateString()}</time>

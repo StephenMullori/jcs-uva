@@ -1,7 +1,9 @@
 <script lang="ts">
-	let { articles }: { articles: { title: string; image: string; text: string }[] } = $props();
+	export let data;
 
-	articles = [
+	// let { articles }: { articles: { title: string; image: string; text: string }[] };
+
+	const articles = [
 		{
 			title: 'lorem',
 			image: '/#',

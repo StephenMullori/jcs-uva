@@ -1,11 +1,11 @@
-<script kang="ts">
-	const articles = $props();
+<script lang="ts">
+	import type { PageData } from '../../../routes/$types';
 </script>
 
 <div
 	class="flex flex-col items-start justify-start gap-4 border-[#ddd] bg-[#ecf0f1] px-2 pb-2 pt-8"
 >
-	<h1>{articles.title}</h1>
+	<h1>Test</h1>
 	<article class="w-full">
 		<img src="https://picsum.photos/300/200" alt="" class="mr-auto w-full max-w-md" />
 		<h2>Title</h2>
