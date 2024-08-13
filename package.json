@@ -1,5 +1,5 @@
 {
-	"name": "jcs-uva-rebuild",
+	"name": "jcs-uva",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -27,7 +27,7 @@
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"prettier-plugin-tailwindcss": "^0.6.5",
-		"svelte": "^5.0.0-next.1",
+		"svelte": "^4.2.7",
 		"svelte-check": "^3.6.0",
 		"tailwindcss": "^3.4.9",
 		"typescript": "^5.0.0",
@@ -41,6 +41,7 @@
 		"@sanity/image-url": "^1.0.2",
 		"@sanity/types": "^3.53.0",
 		"clsx": "^2.1.1",
+		"lucide-svelte": "^0.427.0",
 		"tailwind-merge": "^2.5.2",
 		"tailwind-variants": "^0.2.1"
 	}
