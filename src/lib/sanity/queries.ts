@@ -13,7 +13,8 @@ export const querryAllSlugs = async (): Promise<Slug[]> => {
 };
 
 export const queryArticleFromSlug = async (urlParam: string): Promise<Article[]> => {
-	const querry = '*[_type=="article"&&slug.current==$urlParam]';
+	const querry =
+		'*[_type=="article"&&slug.current==$urlParam]{title, publishedAt, body, bannerImage }';
 	const params = { urlParam };
 	const articles: Article[] = await client.fetch(querry, params);
 	return articles;
@@ -23,6 +24,7 @@ export interface Article {
 	title: string;
 	publishedAt: Date;
 	body: PortableTextBlock[];
+	bannerImage: ImageAsset;
 }
 export interface Post {
 	_type: 'post';
