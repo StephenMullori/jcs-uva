@@ -1,3 +1,3 @@
-export interface DisplayInfo {
-	title: string;
+export interface FeatureDisplayInfo {
+	blockTitle: string;
 }
