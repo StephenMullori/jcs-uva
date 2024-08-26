@@ -1,5 +1,5 @@
 import type { PortableTextBlock } from '@portabletext/types';
-import type { ImageAsset, Slug } from '@sanity/types';
+import type { File, ImageAsset, Slug } from '@sanity/types';
 import { client } from './client';
 import type { SanityImageCrop, SanityImageHotspot } from '@sanity/image-url/lib/types/types';
 import type { Image } from '@sanity/types';
@@ -14,15 +14,18 @@ export const querryAllSlugs = async (): Promise<Slug[]> => {
 	return slugs;
 };
 
-export const queryResearchFromSlug = async (urlParam: string): Promise<Article[]> => {
+export const queryResearchFromSlug = async (urlParam: string): Promise<ResearchArticle[]> => {
 	const querry = `*[_type=="research"&&slug.current==$urlParam]{
 		title,
 		publishedAt,
+		categories[]->{
+			title,
+		},
 		abstract,
-		authors->{
+		pdfFile,
+		authors[]->{
 			name,
 			slug,
-			image
 		},
 		editor->{
 			name,
@@ -31,16 +34,18 @@ export const queryResearchFromSlug = async (urlParam: string): Promise<Article[]
 		},
 	}`;
 	const params = { urlParam };
-	const articles: Article[] = await client.fetch(querry, params);
+	const articles: ResearchArticle[] = await client.fetch(querry, params);
 	return articles;
 };
 
-export const queryNewsFromSlug = async (urlParam: string): Promise<Article[]> => {
+export const queryNewsFromSlug = async (urlParam: string): Promise<NewsArticle[]> => {
 	const querry = `*[_type=="news"&&slug.current==$urlParam]{
 		title,
 		publishedAt,
 		body,
-		categories->,
+		categories[]->{
+			title,
+		},
 		bannerImage,
 		author->{
 			name,
@@ -54,7 +59,7 @@ export const queryNewsFromSlug = async (urlParam: string): Promise<Article[]> =>
 		},
 	}`;
 	const params = { urlParam };
-	const articles: Article[] = await client.fetch(querry, params);
+	const articles: NewsArticle[] = await client.fetch(querry, params);
 	return articles;
 };
 
@@ -70,7 +75,16 @@ export interface WriterBlurb {
 	image: Image | null;
 }
 
-export interface Article {
+export interface ResearchArticle {
+	title: string;
+	publishedAt: string;
+	abstract: PortableTextBlock[];
+	authors: WriterBlurb[] | null;
+	editor: WriterBlurb | null;
+	pdfFile: File;
+}
+
+export interface NewsArticle {
 	title: string;
 	publishedAt: string;
 	body: PortableTextBlock[];
