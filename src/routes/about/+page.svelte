@@ -1,5 +1,5 @@
-<main class="pr-20 pt-20">
-	<div class="m-auto flex max-h-screen max-w-screen-lg grow flex-col gap-8">
+<main class="">
+	<div class="m-auto flex max-w-screen-lg grow flex-col gap-8">
 		<h2 class="text-3xl font-semibold">About the Journal of Computer Science at UVA</h2>
 
 		<p class="text-xl leading-8">
@@ -26,7 +26,6 @@
 			> or follow the QR code below.
 		</p>
 		<img src="/images/sign-up-qr-code.png" alt="Qr Code" class="max-w-72" />
-
-		<div class="h-48"></div>
+		<div class="p-48"></div>
 	</div>
 </main>
