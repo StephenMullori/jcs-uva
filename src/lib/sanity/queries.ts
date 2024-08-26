@@ -34,6 +34,7 @@ export const queryResearchFromSlug = async (urlParam: string): Promise<Article[]
 	const articles: Article[] = await client.fetch(querry, params);
 	return articles;
 };
+
 export const queryNewsFromSlug = async (urlParam: string): Promise<Article[]> => {
 	const querry = `*[_type=="news"&&slug.current==$urlParam]{
 		title,

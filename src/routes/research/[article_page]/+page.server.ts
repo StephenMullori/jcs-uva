@@ -1,11 +1,11 @@
-import { queryArticleFromSlug } from '$lib/sanity/queries';
+import { queryResearchFromSlug } from '$lib/sanity/queries';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load = (async (event) => {
 	const url = event.params.article_page;
 
-	const article = await queryArticleFromSlug(url);
+	const article = await queryResearchFromSlug(url);
 	if (article.length === 0) {
 		throw error(404, 'Page not found');
 	}

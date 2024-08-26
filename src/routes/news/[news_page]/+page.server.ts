@@ -9,8 +9,5 @@ export const load = (async (event) => {
 	if (article.length === 0) {
 		throw error(404, 'Page not found');
 	}
-	//console.log('date time', article[0]);
-	const test = article[0];
-
 	return { article: article[0] };
 }) satisfies PageServerLoad;
