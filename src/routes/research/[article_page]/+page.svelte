@@ -8,9 +8,6 @@
 
 	export let data: PageData;
 	const builder = imageUrlBuilder(client);
-	function urlFor(source) {
-		return builder.image(source);
-	}
 
 	const { title, publishedAt, body, bannerImage, author, editor } = data.article;
 	const publishingDate = new Date(publishedAt);
@@ -24,9 +21,8 @@
 
 		<div class="mb-2 flex gap-2 text-lg">
 			<p>published:</p>
-			<time datetime={publishingDate}>{publishingDate.toDateString()}</time>
+			<time datetime={publishedAt}>{publishingDate.toDateString()}</time>
 		</div>
-		<img src={urlFor(bannerImage)} alt="Main image" class=" mb-4 max-w-5xl object-cover" />
 	</header>
 
 	<div class="m-auto w-2/3 max-w-2xl">

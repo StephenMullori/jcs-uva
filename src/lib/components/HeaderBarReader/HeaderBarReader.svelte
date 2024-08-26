@@ -5,11 +5,11 @@
 		</a>
 
 		<h1>Journal of Computer Science At UVA</h1>
-		<a href="/#">News</a>
+		<a href="/news">News</a>
 		<span>|</span>
-		<a href="/#">Research</a>
+		<a href="/research">Research</a>
 		<span>|</span>
-		<a href="/#">About us</a>
+		<a href="/about">About us</a>
 	</div>
 
 	<div class="bg-"></div>

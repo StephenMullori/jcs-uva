@@ -14,11 +14,32 @@ export const querryAllSlugs = async (): Promise<Slug[]> => {
 	return slugs;
 };
 
-export const queryArticleFromSlug = async (urlParam: string): Promise<Article[]> => {
-	const querry = `*[_type=="article"&&slug.current==$urlParam]{
+export const queryResearchFromSlug = async (urlParam: string): Promise<Article[]> => {
+	const querry = `*[_type=="research"&&slug.current==$urlParam]{
+		title,
+		publishedAt,
+		abstract,
+		authors->{
+			name,
+			slug,
+			image
+		},
+		editor->{
+			name,
+			slug,
+			image
+		},
+	}`;
+	const params = { urlParam };
+	const articles: Article[] = await client.fetch(querry, params);
+	return articles;
+};
+export const queryNewsFromSlug = async (urlParam: string): Promise<Article[]> => {
+	const querry = `*[_type=="news"&&slug.current==$urlParam]{
 		title,
 		publishedAt,
 		body,
+		categories->,
 		bannerImage,
 		author->{
 			name,
