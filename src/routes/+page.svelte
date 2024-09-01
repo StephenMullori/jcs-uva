@@ -4,11 +4,12 @@
 	import TextDisplay from '$lib/components/TextDisplay/TextDisplay.svelte';
 	import BlockDisplay from '$lib/components/BlockDisplay/BlockDisplay.svelte';
 	import type { PageData } from './$types';
+	import PictureBlock from '$lib/components/PictureBlock/PictureBlock.svelte';
 
 	export let data: PageData;
 </script>
 
-<main class="m-auto grid max-w-screen-2xl items-end gap-4 py-16 pr-2 xl:grid-cols-3">
+<main class="m-auto grid max-w-screen-2xl items-start gap-4 py-16 pr-2 xl:grid-cols-3">
 	<div class="">
 		<FeatureDisplay
 			articles={{
@@ -17,6 +18,19 @@
 		/>
 		<BlockDisplay arr={[1, 2, 3]} />
 	</div>
-	<BlockDisplay arr={[1, 2, 3, 4, 5]} />
-	<TextDisplay data={{}} />
+	<div class="">
+		<PictureBlock data={{}} />
+		<PictureBlock data={{}} />
+
+		<BlockDisplay arr={[1, 2]} />
+	</div>
+
+	<div class="">
+		<TextDisplay arr={[1, 2, 3, 4]} />
+		<FeatureDisplay
+			articles={{
+				blockTitle: 'News'
+			}}
+		/>
+	</div>
 </main>

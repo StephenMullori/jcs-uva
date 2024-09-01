@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"engines": {
-  		"node": ">=18.18.0"
+		"node": ">=18.18.0"
 	},
 	"scripts": {
 		"dev": "vite dev",
@@ -43,6 +43,7 @@
 		"@sanity/client": "^6.21.2",
 		"@sanity/image-url": "^1.0.2",
 		"@sanity/types": "^3.53.0",
+		"bits-ui": "^0.21.13",
 		"clsx": "^2.1.1",
 		"lucide-svelte": "^0.427.0",
 		"tailwind-merge": "^2.5.2",
