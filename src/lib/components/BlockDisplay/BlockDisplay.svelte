@@ -1,5 +1,5 @@
 <script lang="ts">
-	export const arr = [1, 2, 3];
+	export let arr;
 </script>
 
 <div class="m-auto max-w-screen-sm px-4 pb-4 pt-2">

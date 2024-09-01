@@ -8,20 +8,24 @@
 			<img
 				src="https://picsum.photos/100"
 				alt=""
-				class=" sm:aspect-picture w-full max-w-40 object-cover"
+				class="aspect-picture m-auto w-full object-cover"
 			/>
 			<div class="">
-				<p class="hover:underline">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+				<p class="text-lg hover:underline">
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+				</p>
 			</div>
 		</article>
 		<article class="mb-2">
 			<img
 				src="https://picsum.photos/100"
 				alt=""
-				class=" sm:aspect-picture w-full max-w-40 object-fill"
+				class="aspect-picture m-auto w-full object-cover"
 			/>
 			<div class="">
-				<p class="hover:underline">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+				<p class="text-lg hover:underline">
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+				</p>
 			</div>
 		</article>
 	</div>

@@ -22,7 +22,7 @@
 		<PictureBlock data={{}} />
 		<PictureBlock data={{}} />
 
-		<BlockDisplay arr={[1, 2]} />
+		<BlockDisplay arr={[1]} />
 	</div>
 
 	<div class="">
