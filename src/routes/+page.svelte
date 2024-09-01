@@ -6,10 +6,7 @@
 	export let data: PageData;
 </script>
 
-<main class="grid grid-cols-[200px_minmax(300px,_1fr)_minmax(300px,_1fr)] gap-4 py-16 pr-2">
-	<div class="">
-		<!-- <Sidebar articles={[]} /> -->
-	</div>
+<main class="m-auto grid max-w-screen-2xl gap-4 py-16 pr-2 xl:grid-cols-3">
 	<FeatureDisplay
 		articles={{
 			blockTitle: 'News'
@@ -17,7 +14,12 @@
 	/>
 	<FeatureDisplay
 		articles={{
-			blockTitle: 'Research'
+			blockTitle: 'News'
+		}}
+	/>
+	<FeatureDisplay
+		articles={{
+			blockTitle: 'News'
 		}}
 	/>
 </main>
