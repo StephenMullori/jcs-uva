@@ -9,7 +9,7 @@
 	export let data: PageData;
 </script>
 
-<main class="m-auto grid max-w-screen-2xl items-start gap-4 py-16 pr-2 xl:grid-cols-3">
+<main class="m-auto grid max-w-screen-2xl items-start gap-4 py-16 pr-2 lg:grid-cols-2">
 	<div class="">
 		<FeatureDisplay
 			articles={{
@@ -17,12 +17,6 @@
 			}}
 		/>
 		<BlockDisplay arr={[1, 2, 3]} />
-	</div>
-	<div class="">
-		<PictureBlock data={{}} />
-		<PictureBlock data={{}} />
-
-		<BlockDisplay arr={[1]} />
 	</div>
 
 	<div class="">
