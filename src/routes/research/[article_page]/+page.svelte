@@ -12,8 +12,9 @@
 	// const publishingDate = new Date(publishedAt);
 </script>
 
+<!-- 
 <div class="m-auto w-2/3 pt-12">
-	<!-- 	
+	
 	<header class="m-auto max-w-5xl">
 		<h1 class=" mb-4 text-5xl font-bold">{title}</h1>
 		<WriterInfoBlurb writer={author} position={'author'} />
@@ -26,6 +27,6 @@
 	</header>
 
 	<div class="m-auto w-2/3 max-w-2xl">
-		<PortableText value={body} components={{}} />
-	</div> -->
-</div>
+		<PortableText value={abstract} components={{}} />
+	</div> 
+</div> -->
