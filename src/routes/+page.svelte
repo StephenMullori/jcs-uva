@@ -9,22 +9,24 @@
 	export let data: PageData;
 </script>
 
-<main class="m-auto grid max-w-screen-2xl items-start gap-4 py-16 pr-2 lg:grid-cols-2">
-	<div class="">
+<main class="m-auto grid max-w-screen-xl items-start gap-4 py-16 pr-2 lg:grid-cols-2">
+	<div class="max-w-lg">
 		<FeatureDisplay
 			articles={{
 				blockTitle: 'News'
 			}}
 		/>
-		<BlockDisplay arr={[1, 2, 3]} />
+		<PictureBlock data={{}} />
+
+		<TextDisplay arr={[1]} />
 	</div>
 
-	<div class="">
-		<TextDisplay arr={[1, 2, 3, 4]} />
+	<div class="max-w-lg">
 		<FeatureDisplay
 			articles={{
 				blockTitle: 'News'
 			}}
 		/>
+		<BlockDisplay arr={[1, 2, 3, 4]} />
 	</div>
 </main>
