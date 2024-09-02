@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"engines": {
-  		"node": ">=18.18.0"
+		"node": ">=18.18.0"
 	},
 	"scripts": {
 		"dev": "vite dev",
@@ -21,6 +21,7 @@
 		"@sveltejs/adapter-cloudflare": "^4.7.2",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@tailwindcss/line-clamp": "^0.4.4",
 		"@types/eslint": "^9.6.0",
 		"autoprefixer": "^10.4.20",
 		"eslint": "^9.0.0",
@@ -43,6 +44,7 @@
 		"@sanity/client": "^6.21.2",
 		"@sanity/image-url": "^1.0.2",
 		"@sanity/types": "^3.53.0",
+		"bits-ui": "^0.21.13",
 		"clsx": "^2.1.1",
 		"lucide-svelte": "^0.427.0",
 		"tailwind-merge": "^2.5.2",
