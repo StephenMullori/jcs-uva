@@ -7,26 +7,20 @@
 	import PictureBlock from '$lib/components/PictureBlock/PictureBlock.svelte';
 
 	export let data: PageData;
+	const research = data.homePage.research;
 </script>
 
 <main class="m-auto grid max-w-screen-xl items-start gap-4 py-16 pr-2 lg:grid-cols-2">
 	<div class="max-w-lg">
-		<FeatureDisplay
-			articles={{
-				blockTitle: 'News'
-			}}
-		/>
-		<PictureBlock data={{}} />
-
-		<TextDisplay arr={[1]} />
+		<FeatureDisplay article={research[1]} />
+		<BlockDisplay arr={[research[0], research[2]]} />
+		<TextDisplay count={[0, 1, 2]} />
 	</div>
 
 	<div class="max-w-lg">
-		<FeatureDisplay
-			articles={{
-				blockTitle: 'News'
-			}}
-		/>
-		<BlockDisplay arr={[1, 2, 3, 4]} />
+		<FeatureDisplay />
+		<PictureBlock count={[0, 1]} />
+
+		<BlockDisplay count={[0, 1]} />
 	</div>
 </main>

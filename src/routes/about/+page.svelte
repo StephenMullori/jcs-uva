@@ -1,5 +1,5 @@
-<main class="">
-	<div class="m-auto flex max-w-screen-lg grow flex-col gap-8">
+<main class="pt-12">
+	<div class="m-auto flex max-w-screen-md grow flex-col gap-8">
 		<h2 class="text-3xl font-semibold">About the Journal of Computer Science at UVA</h2>
 
 		<p class="text-xl leading-8">
@@ -16,13 +16,13 @@
 		<p class="text-xl leading-8">
 			We are currently looking for writers and editors to help produce high-quality content for the
 			journal regarding news and research reports.If you are interested in helping to promote CS at
-			UVA with the JCS-UVA please fill out the form here <a
+			UVA with the JCS-UVA please fill out the form <a
 				class="text-blue-600 underline underline-offset-4"
 				href="https://docs.google.com/forms/d/e/1FAIpQLSdkXwe4BqbU77EecX2dGE6OLSgq-GuRDLnqJLwDV99CsFFhaw/viewform"
 				>here</a
 			> or follow the QR code below
 		</p>
 		<img src="/images/sign-up-qr-code.png" alt="Qr Code" class="max-w-72" />
-		<div class="p-48"></div>
+		<div class="py-48"></div>
 	</div>
 </main>

@@ -4,7 +4,6 @@ import type { PageServerLoad } from './$types';
 
 export const load = (async (event) => {
 	const url = event.params.news_page;
-	console.log('url: ', url);
 	const article = await queryNewsFromSlug(url);
 	if (article.length === 0) {
 		throw error(404, 'Page not found');

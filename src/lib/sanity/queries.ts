@@ -1,7 +1,6 @@
 import type { PortableTextBlock } from '@portabletext/types';
 import type { File, ImageAsset, Slug } from '@sanity/types';
 import { client } from './client';
-import type { SanityImageCrop, SanityImageHotspot } from '@sanity/image-url/lib/types/types';
 import type { Image } from '@sanity/types';
 // import groq from 'groq';
 
@@ -22,7 +21,11 @@ export const queryResearchFromSlug = async (urlParam: string): Promise<ResearchA
 			title,
 		},
 		abstract,
-		pdfFile,
+		pdfFile{
+			asset->{
+				url
+			},
+		},
 		authors[]->{
 			name,
 			slug,
@@ -63,10 +66,43 @@ export const queryNewsFromSlug = async (urlParam: string): Promise<NewsArticle[]
 	return articles;
 };
 
-export interface BannerImage {
-	asset: ImageAsset;
-	crop: SanityImageCrop;
-	hotspot: SanityImageHotspot;
+export const queryHomePage = async (): Promise<HomePageInfo> => {
+	const querryNews = `*[_type=="news"]{
+		title,
+		bannerImage,
+		blurb,
+		_type,
+		slug
+	}`;
+	const querryResearch = `*[_type=="research"]{
+		title,
+		bannerImage,
+		blurb,
+		_type,
+		slug
+	}`;
+	const news: DisplayInfo[] = await client.fetch(querryNews);
+	const research: DisplayInfo[] = await client.fetch(querryResearch);
+	return { news, research };
+};
+
+export interface pdfFile {
+	asset: {
+		url: string;
+	};
+}
+
+export interface HomePageInfo {
+	news: DisplayInfo[];
+	research: DisplayInfo[];
+}
+
+export interface DisplayInfo {
+	title: string;
+	BannerImage: Image;
+	blurb: string;
+	_type: string;
+	slug: Slug;
 }
 
 export interface WriterBlurb {
@@ -81,7 +117,7 @@ export interface ResearchArticle {
 	abstract: PortableTextBlock[];
 	authors: WriterBlurb[] | null;
 	editor: WriterBlurb | null;
-	pdfFile: File;
+	pdfFile: pdfFile;
 }
 
 export interface NewsArticle {
