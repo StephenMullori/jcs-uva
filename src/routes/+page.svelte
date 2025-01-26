@@ -11,15 +11,19 @@
 </script>
 
 <main class="m-auto grid max-w-screen-xl items-start gap-4 py-16 pr-2 lg:grid-cols-2">
-	<div class="max-w-lg">
-		<FeatureDisplay article={research[1]} />
-		<BlockDisplay arr={[research[0], research[2]]} />
-		<TextDisplay count={[0, 1, 2]} />
+	<div class="max-w-">
+		<h3 class="px-4 text-4xl font-semibold">UVA Comunity Today</h3>
+		<hr />
+		<FeatureDisplay />
+		<div class="h-[2vh]"></div>
+		<BlockDisplay count={[0, 1, 2, 3]} />
 	</div>
 
 	<div class="max-w-lg">
-		<FeatureDisplay />
-		<PictureBlock count={[0, 1]} />
+		<h3 class="px-4 text-4xl font-semibold">By JCS</h3>
+		<hr />
+		<FeatureDisplay article={research[1]} />
+		<PictureBlock arr={[research[0], research[2]]} />
 
 		<BlockDisplay count={[0, 1]} />
 	</div>

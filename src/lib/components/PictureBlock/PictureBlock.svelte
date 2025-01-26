@@ -30,7 +30,7 @@
 							class="aspect-picture m-auto w-full object-cover"
 						/>
 						<div class="">
-							<p class=" text-lg hover:underline">{noInput.title}</p>
+							<p class=" max-w-full truncate text-lg hover:underline">{noInput.title}</p>
 						</div>
 					</a>
 				</article>
@@ -49,7 +49,7 @@
 							class="aspect-picture m-auto w-full object-cover"
 						/>
 						<div class="">
-							<p class=" text-lg hover:underline">{arrItem.title}</p>
+							<p class=" max-w-full truncate text-lg hover:underline">{arrItem.title}</p>
 						</div>
 					</a>
 				</article>
