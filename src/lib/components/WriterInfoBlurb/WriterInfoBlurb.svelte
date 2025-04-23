@@ -4,8 +4,12 @@
 	import imageUrlBuilder from '@sanity/image-url';
 	import { CircleUser } from 'lucide-svelte';
 
-	export let writer: WriterBlurb | null;
-	export let position: string;
+	interface Props {
+		writer: WriterBlurb | null;
+		position: string;
+	}
+
+	let { writer, position }: Props = $props();
 	const builder = imageUrlBuilder(client);
 
 	function urlFor(source: any) {

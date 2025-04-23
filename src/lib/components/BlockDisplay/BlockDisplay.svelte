@@ -10,9 +10,23 @@
 		type: '/#'
 	};
 
-	export let arr: any = {};
-	export let count: number[] = [0];
-	let defalt = false;
+	// interface pop {
+	// 	arr?: any;
+	// 	count?: number[];
+	// }
+
+	// const placeholder: DisplayInfo = {
+	// 	BannerImage: 'none',
+	// 	title: 'string',
+	// 	blurb: 'string',
+	// 	_type: 'string',
+	// 	slug: 'Slug'
+	// };
+
+	// ignore arr error
+	let { arr = {}, count = [0] }: { arr: DisplayInfo | {}; count: number[] } = $props();
+	let defalt = $state(false);
+
 	if (JSON.stringify(arr) === JSON.stringify({})) {
 		defalt = true;
 	}

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	export let data: PageData;
 
 	import {
 		DefaultBlock,
@@ -13,6 +12,11 @@
 	import StyledLink from '$lib/components/SanityComponets/StyledLink/StyledLink.svelte';
 	import PortableImage from '$lib/components/SanityComponets/PortableImage/PortableImage.svelte';
 	import { urlFor } from '$lib/sanity/image';
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	const { title, publishedAt, body, bannerImage, author, editor } = data.article;
 	const publishingDate = new Date(publishedAt);
@@ -29,7 +33,7 @@
 			<time datetime={publishedAt}>{publishingDate.toDateString()}</time>
 		</div>
 
-		<!-- svelte-ignore a11y-img-redundant-alt -->
+		<!-- svelte-ignore a11y_img_redundant_alt -->
 		<img
 			src={urlFor(bannerImage).url()}
 			alt="Main image"

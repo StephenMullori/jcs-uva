@@ -3,10 +3,10 @@
 	import Sidebar from '$lib/components/SideBar/Sidebar.svelte';
 	import TextDisplay from '$lib/components/TextDisplay/TextDisplay.svelte';
 	import BlockDisplay from '$lib/components/BlockDisplay/BlockDisplay.svelte';
-	import type { PageData } from './$types';
 	import PictureBlock from '$lib/components/PictureBlock/PictureBlock.svelte';
+	import type { PageProps } from './$types';
 
-	export let data: PageData;
+	let { data }: PageProps = $props();
 	const research = data.homePage.research;
 </script>
 
@@ -16,7 +16,7 @@
 		<hr />
 		<FeatureDisplay />
 		<div class="h-[2vh]"></div>
-		<BlockDisplay count={[0, 1, 2, 3]} />
+		<BlockDisplay arr={{}} count={[0, 1, 2, 3]} />
 	</div>
 
 	<div class="max-w-lg">
@@ -25,6 +25,6 @@
 		<FeatureDisplay article={research[1]} />
 		<PictureBlock arr={[research[0], research[2]]} />
 
-		<BlockDisplay count={[0, 1]} />
+		<BlockDisplay arr={{}} count={[0, 1]} />
 	</div>
 </main>

@@ -2,7 +2,11 @@
 	import type { MarkComponentProps } from '@portabletext/svelte';
 	import { urlFor } from '$lib/sanity/image';
 
-	export let portableText: MarkComponentProps;
+	interface Props {
+		portableText: MarkComponentProps;
+	}
+
+	let { portableText }: Props = $props();
 	const { value } = portableText;
 	const { asset } = value;
 </script>

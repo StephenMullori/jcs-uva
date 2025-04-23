@@ -10,9 +10,13 @@
 		type: '/#'
 	};
 
-	export let article: any = {};
+	interface Props {
+		article?: any;
+	}
 
-	let defalt = false;
+	let { article = {} }: Props = $props();
+
+	let defalt = $state(false);
 	if (JSON.stringify(article) === JSON.stringify({})) {
 		defalt = true;
 	}

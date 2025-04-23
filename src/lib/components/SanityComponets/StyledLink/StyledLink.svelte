@@ -1,14 +1,19 @@
 <script lang="ts">
 	import type { MarkComponentProps } from '@portabletext/svelte';
 
-	export let portableText: MarkComponentProps;
+	interface Props {
+		portableText: MarkComponentProps;
+		children?: import('svelte').Snippet;
+	}
 
-	$: ({ value } = portableText);
-	$: href = value?.href || value?.url || value?.link || value?.value;
+	let { portableText, children }: Props = $props();
+
+	let { value } = $derived(portableText);
+	let href = $derived(value?.href || value?.url || value?.link || value?.value);
 </script>
 
 {#if typeof href === 'string'}
-	<a {href} class="text-blue-600 underline underline-offset-2"><slot /></a>
+	<a {href} class="text-blue-600 underline underline-offset-2">{@render children?.()}</a>
 {:else}
-	<slot />
+	{@render children?.()}
 {/if}

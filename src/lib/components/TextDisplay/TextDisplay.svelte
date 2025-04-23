@@ -9,9 +9,13 @@
 		type: '/#'
 	};
 
-	export let arr: any = {};
-	export let count: number[] = [0];
-	let defalt = false;
+	interface Props {
+		arr?: any;
+		count?: number[];
+	}
+
+	let { arr = {}, count = [0] }: Props = $props();
+	let defalt = $state(false);
 	if (JSON.stringify(arr) === JSON.stringify({})) {
 		defalt = true;
 	}
