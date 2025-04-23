@@ -7,7 +7,11 @@
 	import WriterInfoBlurb from '$lib/components/WriterInfoBlurb/WriterInfoBlurb.svelte';
 	import { FileText } from 'lucide-svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 
 	const { title, publishedAt, abstract, authors, editor, pdfFile } = data.article;
 	const publishingDate = new Date(publishedAt);

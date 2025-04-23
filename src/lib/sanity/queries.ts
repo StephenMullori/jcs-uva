@@ -1,5 +1,5 @@
 import type { PortableTextBlock } from '@portabletext/types';
-import type { File, ImageAsset, Slug } from '@sanity/types';
+import type { ImageAsset, Slug } from '@sanity/types';
 import { client } from './client';
 import type { Image } from '@sanity/types';
 // import groq from 'groq';

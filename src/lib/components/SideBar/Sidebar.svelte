@@ -1,5 +1,5 @@
 <script lang="ts">
-	export let data;
+	let { data } = $props();
 
 	// let { articles }: { articles: { title: string; image: string; text: string }[] };
 

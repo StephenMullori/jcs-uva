@@ -6,7 +6,11 @@
 	import type { PageData } from './$types';
 	import PictureBlock from '$lib/components/PictureBlock/PictureBlock.svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 	const research = data.homePage.research;
 </script>
 
