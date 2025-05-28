@@ -24,7 +24,7 @@
 	// };
 
 	// ignore arr error
-	let { arr = {}, count = [0] }: { arr: DisplayInfo | {}; count: number[] } = $props();
+	let { arr = {}, count = [0] }: { arr: DisplayInfo[] | {}; count: number[] } = $props();
 	let defalt = $state(false);
 
 	if (JSON.stringify(arr) === JSON.stringify({})) {
