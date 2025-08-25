@@ -54,7 +54,7 @@
 		{/each}
 	</div>
 {:else}
-	<div class="m-auto max-w-screen-sm px-4 pb-4 pt-2">
+	<div class="m-auto max-w-screen-sm pb-4 pt-2">
 		<hr class="mb-2 w-full border-[#3e3e3e]" />
 		{#each arr as arrItem}
 			<a href={createURL(arrItem._type, arrItem.slug)}>

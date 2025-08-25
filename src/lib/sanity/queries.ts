@@ -66,7 +66,7 @@ export const queryNewsFromSlug = async (urlParam: string): Promise<NewsArticle[]
 	return articles;
 };
 
-export const queryHomePage = async (): Promise<HomePageInfo> => {
+export const queryHomePage = async (): Promise<DisplayInfo[]> => {
 	const querryNews = `*[_type=="news"]{
 		title,
 		bannerImage,
@@ -83,7 +83,8 @@ export const queryHomePage = async (): Promise<HomePageInfo> => {
 	}`;
 	const news: DisplayInfo[] = await client.fetch(querryNews);
 	const research: DisplayInfo[] = await client.fetch(querryResearch);
-	return { news, research };
+	const articles = news.concat(research);
+	return articles;
 };
 
 export interface pdfFile {

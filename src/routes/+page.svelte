@@ -8,26 +8,23 @@
 	import type { DisplayInfo } from '$lib/sanity/queries';
 
 	let { data }: PageProps = $props();
-	const research = data.homePage.research;
-	const news = data.homePage.news;
-	let all_articles: DisplayInfo[] = [...news, ...research];
+	const { homePage } = data;
 </script>
 
-<main class="m-auto grid max-w-screen-xl items-start gap-4 py-16 pr-2 lg:grid-cols-2">
-	<div class="max-w-">
-		<h3 class="px-4 text-4xl font-semibold">UVA Comunity Today</h3>
-		<hr />
-		<FeatureDisplay />
-		<div class="h-[2vh]"></div>
-		<BlockDisplay arr={{}} count={[0, 1, 2, 3]} />
-	</div>
+<main class="m-auto max-w-screen-xl pt-16">
+	<h2 class="text-3xl font-semibold">By JCS@UVA</h2>
+	<div class="m-auto grid max-w-screen-xl items-start gap-4 py-4 lg:grid-cols-2">
+		<div class="max-w-lg">
+			<FeatureDisplay article={homePage[0]} />
+			<div class="h-[2vh]"></div>
+			<BlockDisplay arr={homePage.slice(1, 4)} count={[0, 1, 2]} />
+		</div>
 
-	<div class="max-w-lg">
-		<h3 class="px-4 text-4xl font-semibold">By JCS</h3>
-		<hr />
-		<FeatureDisplay article={all_articles[0]} />
-		<PictureBlock arr={[all_articles[1], all_articles[2]]} />
+		<div class="max-w-lg">
+			<FeatureDisplay article={homePage[4]} />
+			<PictureBlock arr={[homePage[5], homePage[6]]} />
 
-		<BlockDisplay arr={[all_articles[3], all_articles[4]]} count={[0, 1]} />
+			<BlockDisplay arr={[homePage[7]]} count={[0]} />
+		</div>
 	</div>
 </main>

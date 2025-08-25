@@ -33,14 +33,14 @@
 		</article>
 	</div>
 {:else}
-	<div class="m-auto max-w-screen-sm px-4 pb-4 pt-2">
+	<div class="m-auto max-w-screen-sm pb-4 pt-2">
 		<article class="m-auto mb-5 w-full">
 			<a href={createURL(article._type, article.slug)}>
 				<!-- <img src="https://picsum.photos/300/200" alt="" class=" w-full object-cover" /> -->
 				<img
 					src={urlFor(article.bannerImage).url()}
 					alt="Main image"
-					class="mb-4 w-full object-cover"
+					class="mb-4 max-h-80 w-full object-cover"
 				/>
 				<h2 class="mb-2 line-clamp-2 text-4xl font-bold hover:underline">{article.title}</h2></a
 			>
